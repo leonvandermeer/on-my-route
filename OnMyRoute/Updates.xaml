@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="OnMyRoute.Updates"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:OnMyRoute"
+             xmlns:input="clr-namespace:OnMyRoute.Input"
+             xmlns:windows="clr-namespace:OnMyRoute.Windows"
+             xmlns:data="clr-namespace:OnMyRoute.Windows.Data"
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type local:UpdatesViewModel}}"
+             mc:Ignorable="d"
+             d:DesignHeight="270" d:DesignWidth="300" Background="White">
+    <UserControl.CommandBindings>
+        <input:CommandProviderBinding Command="{x:Static local:UpdateCommands.PreRelease}" />
+        <input:CommandProviderBinding Command="{x:Static local:UpdateCommands.UpdateNow}" />
+    </UserControl.CommandBindings>
+    <StackPanel>
+        <windows:VisualStates.GoToElementState>
+            <data:ElementStateBinding>
+                <Binding Path="UpdateState"/>
+            </data:ElementStateBinding>
+        </windows:VisualStates.GoToElementState>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="UpdateState">
+                <VisualState x:Name="Up2date" >
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="checking" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="downloading" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="updateAvailable" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="error" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Checking">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="up2date" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="downloading" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="updateAvailable" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="error" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Downloading">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="checking" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="up2date" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="updateAvailable" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="error" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="UpdateAvailable">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="checking" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="up2date" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="downloading" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="error" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="Error">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="checking" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="up2date" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="downloading" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="updateAvailable" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Collapsed}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <TextBlock Margin="5">
+            <Run Text="Current Version: "/>
+            <Run FontWeight="Bold" Text="{Binding CurrentVersion, Mode=OneWay}"/>
+        </TextBlock>
+        <TextBlock x:Name="checking" Margin="5">
+            <Run Text="Checking for updates..."/>
+        </TextBlock>
+        <TextBlock x:Name="up2date" Margin="5" Text="You have the latest version." />
+        <TextBlock x:Name="downloading" Margin="5">
+            <Run Text="Downloading version" />
+            <Run FontWeight="Bold" Text="{Binding NewVersion.Manifest.Version, Mode=OneWay}" />
+        </TextBlock>
+        <StackPanel x:Name="updateAvailable">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <local:Warning />
+                <TextBlock>
+                    <Run Text="Update available: "/>
+                    <Run FontWeight="Bold" Text="{Binding NewVersion.Manifest.Version, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+            <TextBlock Text="{Binding UpdateBefore, Mode=OneWay, StringFormat=Please update before \{0\}.}" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Update Now" Command="{x:Static local:UpdateCommands.UpdateNow}" Margin="5" />
+                <local:ToggleSwitch
+                    Content="Update later"
+                    CheckedContent="Update on close"
+                    Margin="5"
+                    IsChecked="{Binding UpdateOnClose}"
+                    IsEnabled="{Binding UpdateCanBePostponed}"
+                    />
+            </StackPanel>
+        </StackPanel>
+        <TextBlock x:Name="error" Margin="5" TextWrapping="Wrap">
+            <Run FontWeight="Bold" Text="An error occurred while checking for updates." />
+            <LineBreak />
+            <Run Text="Details:" />
+            <LineBreak />
+            <Run Text="{Binding ErrorMessage, Mode=OneWay}" />
+        </TextBlock>
+        <CheckBox Content="Include Pre-Release"
+                  Command="{x:Static local:UpdateCommands.PreRelease}"
+                  CommandParameter="{Binding PreRelease}"
+                  IsChecked="{Binding PreRelease}"
+                  />
+    </StackPanel>
+</UserControl>

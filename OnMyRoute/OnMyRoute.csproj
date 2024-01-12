@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <SelfContained>true</SelfContained>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-OnMyRoute</UserSecretsId>
+    <UseWPF>true</UseWPF>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
+    <Product>On My Route</Product>
+    <PackageProjectUrl>https://github.com/leonvandermeer/on-my-route</PackageProjectUrl>
+    <Company>Leon van der Meer</Company>
+    <InstallerCertificateThumbprint>F97E84A908EA73EAB620C03585520A3D1332BDEB</InstallerCertificateThumbprint>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\InnoSetup.Tasks\InnoSetup.Tasks.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Updates.Updates\Updates.Updates.csproj" />
+  </ItemGroup>
+
+  <!-- Workaround for failing intellisense -->
+  <ItemGroup>
+    <Restore Include="$(BaseIntermediateOutputPath)project.assets.json" />
+    <Backup Include="$(BaseIntermediateOutputPath)project.assets.json.bak" />
+    <Restore Include="$(BaseIntermediateOutputPath)project.nuget.cache" />
+    <Backup Include="$(BaseIntermediateOutputPath)project.nuget.cache.bak" />
+  </ItemGroup>
+  <Target Name="Before" BeforeTargets="GenerateTemporaryTargetAssembly">
+    <Copy SourceFiles="@(Restore)" DestinationFiles="@(Backup)" />
+  </Target>
+  <Target Name="After" AfterTargets="GenerateTemporaryTargetAssembly">
+    <Move SourceFiles="@(Backup)" DestinationFiles="@(Restore)" />
+  </Target>
+  <!-- Workaround for failing intellisense -->
+
+  <ItemGroup>
+    <Using Include="System.Windows" />
+  </ItemGroup>
+
+  <Target Name="RestoreProjectImports"
+          AfterTargets="CollectPackageReferences">
+    <Copy SourceFiles="OnMyRoute.csproj.development.props;OnMyRoute.csproj.development.targets"
+          DestinationFolder="$(MSBuildProjectExtensionsPath)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

@@ -1,0 +1,66 @@
+﻿# This workflow will build On My Route
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build
+
+on:
+  push:
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+    - uses: actions/cache@v3 # https://github.com/actions/cache/blob/main/examples.md#c---nuget
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+    - name: Display .NET information
+      run: dotnet --info
+    - name: Import Code Signing Certificate
+      env:
+        CERTIFICATE: ${{ secrets.CERTIFICATE }}
+        CERTIFICATEPASSWORD: ${{ secrets.CERTIFICATEPASSWORD }}
+      run: |
+        Set-Content Certificate.pfx ([Convert]::FromBase64String($env:CERTIFICATE)) -AsByteStream
+        Import-PfxCertificate Certificate.pfx Cert:\CurrentUser\My -Password (ConvertTo-SecureString $env:CERTIFICATEPASSWORD -AsPlainText -Force)
+        del Certificate.pfx
+    - name: Restore, Build
+      run: dotnet build -c Release -bl:build.binlog
+    - name: Publish
+      run: dotnet publish --no-restore --no-build --sc OnMyRoute -bl:publish.binlog
+    - name: Delete Code Signing Certificate
+      if: ${{ always() }}
+      run: dir -Recurse -Force Cert:\ -Include F97E84A908EA73EAB620C03585520A3D1332BDEB, 3EDE07E2FEA63C436BC67A9422218D90690C3375 | % { del $_.PSPath -DeleteKey -Verbose }
+    - name: Test
+      run: dotnet test -c Release --no-build --verbosity normal
+    - name: Show Version
+      uses: dotnet/nbgv@master
+      id: nbgv
+    - run: echo 'SemVer2=${{ steps.nbgv.outputs.SemVer2 }}'
+    - name: Upload log files
+      if: ${{ success() || failure() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: log
+        path: '**/*.binlog'
+    - name: Upload Installer
+      uses: actions/upload-artifact@v3
+      with:
+        name: installer
+        path: '**/installer/**/*'
+    - name: Release
+      if: ${{ github.ref_name == 'main' || startsWith(github.ref_name, 'v') }}
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: 'OnMyRoute/bin/**/installer/**/*'
+        artifactErrorsFailBuild: true
+        commit: ${{ github.ref_name }}
+        tag: ${{ steps.nbgv.outputs.SemVer2 }}
+        draft: ${{ github.ref_name == 'main' }}
+        prerelease: ${{ steps.nbgv.outputs.PrereleaseVersion != '' }}
