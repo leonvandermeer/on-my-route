@@ -1,4 +1,5 @@
 ﻿using Microsoft.Build.Framework;
+using System.Security.Cryptography.X509Certificates;
 using Task = Microsoft.Build.Utilities.Task;
 
 namespace InnoSetup.Tasks;
@@ -26,6 +27,8 @@ public class CreateInnoSetup : Task {
     [Required] public ITaskItem? OutputBaseFilename { get; set; }
 
     [Required] public ITaskItem? OutputDir { get; set; }
+
+    [Required] public ITaskItem? CertificateThumbprint { get; set; }
 
     public override bool Execute() {
         try {
@@ -74,8 +77,24 @@ public class CreateInnoSetup : Task {
         script.WriteLine($"OutputBaseFilename={OutputBaseFilename}");
         string o = Helpers.RelativePathTo(OutputFile!.ItemSpec, OutputDir!.ItemSpec);
         script.WriteLine($"OutputDir={o}");
-        script.WriteLine("SignTool=innosetup.tasks");
+        SignTool(script);
         script.WriteLine();
+    }
+
+    private void SignTool(TextWriter script) {
+        string thumbprint = CertificateThumbprint!.ItemSpec;
+        using X509Store store = new(StoreName.My, StoreLocation.CurrentUser);
+        store.Open(OpenFlags.ReadOnly | OpenFlags.OpenExistingOnly);
+        using X509Certificate2 cert =
+            store.Certificates.Find(X509FindType.FindByThumbprint, thumbprint, false)
+            .Cast<X509Certificate2>().FirstOrDefault();
+        if (cert != null) {
+            script.WriteLine("SignTool=innosetup.tasks");
+        } else {
+            string message = $"Skip Code Signing because certificate {thumbprint} is not found.";
+            script.WriteLine($";SignTool=innosetup.tasks - {message}");
+            Log.LogWarning(message);
+        }
     }
 
     private void CodeSection(TextWriter script) {

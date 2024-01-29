@@ -27,9 +27,13 @@ jobs:
         CERTIFICATE: ${{ secrets.CERTIFICATE }}
         CERTIFICATEPASSWORD: ${{ secrets.CERTIFICATEPASSWORD }}
       run: |
-        Set-Content Certificate.pfx ([Convert]::FromBase64String($env:CERTIFICATE)) -AsByteStream
-        Import-PfxCertificate Certificate.pfx Cert:\CurrentUser\My -Password (ConvertTo-SecureString $env:CERTIFICATEPASSWORD -AsPlainText -Force)
-        del Certificate.pfx
+        if ($env:CERTIFICATE -or $env:CERTIFICATEPASSWORD) {
+            Set-Content Certificate.pfx ([Convert]::FromBase64String($env:CERTIFICATE)) -AsByteStream
+            Import-PfxCertificate Certificate.pfx Cert:\CurrentUser\My -Password (ConvertTo-SecureString $env:CERTIFICATEPASSWORD -AsPlainText -Force)
+            del Certificate.pfx
+        } else {
+            'Import Code Signing Certificate skipped because secrets are not available.'
+        }
     - name: Restore, Build
       run: dotnet build -c Release -bl:build.binlog
     - name: Publish

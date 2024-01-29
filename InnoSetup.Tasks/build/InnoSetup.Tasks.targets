@@ -47,6 +47,7 @@
                      Includes="@(InnoSetupCompilerScript);$(InnoSetupFiles)"
                      OutputBaseFilename="$([System.IO.Path]::GetFileNameWithoutExtension('$(InstallerName)'))"
                      OutputDir="$(InstallerDir)"
+                     CertificateThumbprint="$(InstallerCertificateThumbprint)"
                      />
     <CreateManifest Installer="$(InstallerName)"
                     OutputDir="$(InstallerDir)"
