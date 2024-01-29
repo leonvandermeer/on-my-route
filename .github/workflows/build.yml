@@ -58,6 +58,11 @@ jobs:
       with:
         name: installer
         path: '**/installer/**/*'
+    - name: Tag
+      if: ${{ github.ref_name == 'main' }}
+      run: |
+        git tag ${{ steps.nbgv.outputs.SemVer2 }}
+        git push origin ${{ steps.nbgv.outputs.SemVer2 }}
     - name: Release
       if: ${{ github.ref_name == 'main' || startsWith(github.ref_name, 'v') }}
       uses: ncipollo/release-action@v1
