@@ -281,8 +281,8 @@
       },
       "Microsoft.Extensions.Options": {
         "type": "Transitive",
-        "resolved": "8.0.1",
-        "contentHash": "wmpp+BSU3oGifaev6Z9rrlwHoITLFfpVOSbgBrOXjkbJSCXnZVCsoRGE5c3fJFI4VlNgnNkNlI9y+5jC4fmOEA==",
+        "resolved": "8.0.2",
+        "contentHash": "dWGKvhFybsaZpGmzkGCbNNwBD1rVlWzrZKANLW/CcbFJpCEceMCGzT7zZwHOGBCbwM0SzBuceMj5HN1LKV1QqA==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -307,13 +307,13 @@
       },
       "NuGet.Versioning": {
         "type": "Transitive",
-        "resolved": "6.8.0",
-        "contentHash": "WBu15cdv1lqKkPKXDQOEmEzwKemwrczKYlc2jtuZgRYiZ8TG8F4QzPYiE0Q9eVIpMSk8Aky7mUephf19HjBPOw=="
+        "resolved": "6.9.1",
+        "contentHash": "ypnSvEtpNGo48bAWn95J1oHChycCXcevFSbn53fqzLxlXFSZP7dawu8p/7mHAfGufZQSV2sBpW80XQGIfXO8kQ=="
       },
       "Octokit": {
         "type": "Transitive",
-        "resolved": "9.1.1",
-        "contentHash": "I9vbat7rmMnlpcxeTMiLyBrDlb4RC3t94qCkjf0HIjQhrwq+pt3dkwUyYt/Wl+v27WMbc718CJjMFO+Iw1et7g=="
+        "resolved": "9.1.2",
+        "contentHash": "YKh5EYi+b2mV8eafANJkkZKKBCpI2MNPeSCTlKLYWqVGktOn/TBc7NZEcViPMSNw6R+glgmbkOetLc6LuNK5qQ=="
       },
       "System.Diagnostics.DiagnosticSource": {
         "type": "Transitive",
@@ -344,9 +344,9 @@
       "updates.updates": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Extensions.Options": "[8.0.1, )",
-          "NuGet.Versioning": "[6.8.0, )",
-          "Octokit": "[9.1.1, )",
+          "Microsoft.Extensions.Options": "[8.0.2, )",
+          "NuGet.Versioning": "[6.9.1, )",
+          "Octokit": "[9.1.2, )",
           "Updates.Types": "[1.0.0, )"
         }
       }
