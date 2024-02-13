@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build.yml = .github\workflows\build.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Logging.SingleRollingFile", "Extensions.Logging.SingleRollingFile\Extensions.Logging.SingleRollingFile.csproj", "{A0A22459-2762-4BBC-B915-3E1781F414C0}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InnoSetup.Tasks", "InnoSetup.Tasks\InnoSetup.Tasks.csproj", "{82D4CC9C-3840-41D3-932F-7C93925E3882}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnMyRoute", "OnMyRoute\OnMyRoute.csproj", "{4234677D-1796-4682-9513-B4135838E188}"
@@ -43,6 +45,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0A22459-2762-4BBC-B915-3E1781F414C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A22459-2762-4BBC-B915-3E1781F414C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A22459-2762-4BBC-B915-3E1781F414C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A22459-2762-4BBC-B915-3E1781F414C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82D4CC9C-3840-41D3-932F-7C93925E3882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{82D4CC9C-3840-41D3-932F-7C93925E3882}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82D4CC9C-3840-41D3-932F-7C93925E3882}.Release|Any CPU.ActiveCfg = Release|Any CPU
