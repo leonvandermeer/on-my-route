@@ -4,9 +4,9 @@
     "net8.0": {
       "Microsoft.Extensions.Options": {
         "type": "Direct",
-        "requested": "[8.0.1, )",
-        "resolved": "8.0.1",
-        "contentHash": "wmpp+BSU3oGifaev6Z9rrlwHoITLFfpVOSbgBrOXjkbJSCXnZVCsoRGE5c3fJFI4VlNgnNkNlI9y+5jC4fmOEA==",
+        "requested": "[8.0.2, )",
+        "resolved": "8.0.2",
+        "contentHash": "dWGKvhFybsaZpGmzkGCbNNwBD1rVlWzrZKANLW/CcbFJpCEceMCGzT7zZwHOGBCbwM0SzBuceMj5HN1LKV1QqA==",
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.Primitives": "8.0.0"
@@ -20,15 +20,15 @@
       },
       "NuGet.Versioning": {
         "type": "Direct",
-        "requested": "[6.8.0, )",
-        "resolved": "6.8.0",
-        "contentHash": "WBu15cdv1lqKkPKXDQOEmEzwKemwrczKYlc2jtuZgRYiZ8TG8F4QzPYiE0Q9eVIpMSk8Aky7mUephf19HjBPOw=="
+        "requested": "[6.9.1, )",
+        "resolved": "6.9.1",
+        "contentHash": "ypnSvEtpNGo48bAWn95J1oHChycCXcevFSbn53fqzLxlXFSZP7dawu8p/7mHAfGufZQSV2sBpW80XQGIfXO8kQ=="
       },
       "Octokit": {
         "type": "Direct",
-        "requested": "[9.1.1, )",
-        "resolved": "9.1.1",
-        "contentHash": "I9vbat7rmMnlpcxeTMiLyBrDlb4RC3t94qCkjf0HIjQhrwq+pt3dkwUyYt/Wl+v27WMbc718CJjMFO+Iw1et7g=="
+        "requested": "[9.1.2, )",
+        "resolved": "9.1.2",
+        "contentHash": "YKh5EYi+b2mV8eafANJkkZKKBCpI2MNPeSCTlKLYWqVGktOn/TBc7NZEcViPMSNw6R+glgmbkOetLc6LuNK5qQ=="
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions": {
         "type": "Transitive",
