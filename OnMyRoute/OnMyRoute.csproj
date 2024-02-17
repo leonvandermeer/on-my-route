@@ -16,11 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Diagnostics.NETCore.Client" Version="0.2.510501" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Extensions.Logging.SingleRollingFile\Extensions.Logging.SingleRollingFile.csproj" />
     <ProjectReference Include="..\InnoSetup.Tasks\InnoSetup.Tasks.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\Updates.Updates\Updates.Updates.csproj" />
   </ItemGroup>

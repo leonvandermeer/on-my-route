@@ -2,6 +2,15 @@
   "version": 1,
   "dependencies": {
     "net8.0-windows7.0": {
+      "Microsoft.Diagnostics.NETCore.Client": {
+        "type": "Direct",
+        "requested": "[0.2.510501, )",
+        "resolved": "0.2.510501",
+        "contentHash": "juoqJYMDs+lRrrZyOkXXMImJHneCF23cuvO4waFRd2Ds7j+ZuGIPbJm0Y/zz34BdeaGiiwGWraMUlln05W1PCQ==",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "6.0.0"
+        }
+      },
       "Microsoft.Extensions.Hosting": {
         "type": "Direct",
         "requested": "[8.0.0, )",
@@ -336,6 +345,12 @@
         "contentHash": "OdrZO2WjkiEG6ajEFRABTRCi/wuXQPxeV6g8xvUJqdxMvvuCCEk86zPla8UiIQJz3durtUEbNyY/3lIhS0yZvQ==",
         "dependencies": {
           "System.Text.Encodings.Web": "8.0.0"
+        }
+      },
+      "extensions.logging.singlerollingfile": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Configuration": "[8.0.0, )"
         }
       },
       "updates.types": {
