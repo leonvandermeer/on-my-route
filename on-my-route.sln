@@ -27,6 +27,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CB9A8F6C-C192-4094-BE9F-B2692C63C241}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\CollectSymbolFiles.proj = .github\workflows\CollectSymbolFiles.proj
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Logging.SingleRollingFile", "Extensions.Logging.SingleRollingFile\Extensions.Logging.SingleRollingFile.csproj", "{A0A22459-2762-4BBC-B915-3E1781F414C0}"
