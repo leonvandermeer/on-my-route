@@ -40,6 +40,8 @@ jobs:
       run: dotnet build -c Release -bl:build.binlog
     - name: Publish
       run: dotnet publish --no-restore --no-build --sc OnMyRoute -bl:publish.binlog
+    - name: Collect Symbol files
+      run: dotnet build .github\workflows\CollectSymbolFiles.proj -p:Solution=on-my-route.sln -c Release -bl:symbol.binlog
     - name: Delete Code Signing Certificate
       if: ${{ always() }}
       run: dir -Recurse -Force Cert:\ -Include F97E84A908EA73EAB620C03585520A3D1332BDEB, 3EDE07E2FEA63C436BC67A9422218D90690C3375 | % { del $_.PSPath -DeleteKey -Verbose }
@@ -60,6 +62,11 @@ jobs:
       with:
         name: installer
         path: '**/installer/**/*'
+    - name: Upload Symbol files
+      uses: actions/upload-artifact@v4
+      with:
+        name: Symbol files
+        path: 'Symbols.zip'
     - name: Tag
       if: ${{ github.ref_name == 'main' }}
       run: |
@@ -69,7 +76,9 @@ jobs:
       if: ${{ github.ref_name == 'main' || startsWith(github.ref_name, 'v') }}
       uses: ncipollo/release-action@v1
       with:
-        artifacts: 'OnMyRoute/bin/**/installer/**/*'
+        artifacts: |
+          'OnMyRoute/bin/**/installer/**/*'
+          'Symbols.zip'
         artifactErrorsFailBuild: true
         commit: ${{ github.ref_name }}
         tag: ${{ steps.nbgv.outputs.SemVer2 }}

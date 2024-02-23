@@ -1,0 +1,82 @@
+﻿<Project DefaultTargets="CollectSymbolFiles">
+
+    <UsingTask TaskName="Zip" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+        <ParameterGroup>
+            <ArchiveFileName Required="true" />
+            <RootDir Required="true" />
+            <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+        </ParameterGroup>
+        <Task>
+            <Using Namespace="System.IO.Compression" />
+            <Code Type="Fragment" Language="cs">
+                <![CDATA[
+        Log.LogMessage("RootDir {0} ", RootDir);
+        Directory.CreateDirectory(Path.GetDirectoryName(ArchiveFileName));
+        File.Delete(ArchiveFileName);
+        using (ZipArchive archive = ZipFile.Open(ArchiveFileName, ZipArchiveMode.Create)) {
+          foreach (ITaskItem item in Files) {
+            string sourceFileName = item.GetMetadata("FullPath");
+            string entryName = sourceFileName.Substring(RootDir.Length + 1);
+            archive.CreateEntryFromFile(sourceFileName, entryName);
+            Log.LogMessage("Zipped {0} -> {1}", sourceFileName, entryName);
+          }
+        }
+        Log.LogMessage("Created {0}.", ArchiveFileName);
+        ]]>
+            </Code>
+        </Task>
+    </UsingTask>
+
+    <Target Name="CollectSymbolFiles">
+        <Error Condition="$(Solution) == ''" Text="Missing Solution property! Please specify a solution using the Solution property (e.g. dotnet build $(MSBuildThisFile) /p:Solution=Some.sln)" />
+        <PropertyGroup>
+            <Solution>$([MSBuild]::Escape($([System.IO.Path]::GetFullPath(`$([System.IO.Path]::Combine(`$(MSBuildStartupDirectory)`, `$(Solution)`))`))))</Solution>
+            <RootDir>$([System.IO.Path]::GetDirectoryName($(Solution)))</RootDir>
+            <ArchiveFileName>$(RootDir)\Symbols.zip</ArchiveFileName>
+        </PropertyGroup>
+        <MSBuild Targets="CollectSolution"
+                 Projects="$(Solution)"
+                 Properties="DirectorySolutionTargetsPath=$(MSBuildThisFileFullPath)"
+                 BuildInParallel="True">
+            <Output TaskParameter="TargetOutputs" ItemName="CollectedPdbFiles" />
+        </MSBuild>
+        <Message Importance="high" Text="pdb: %(CollectedPdbFiles.Identity)" />
+        <Zip ArchiveFileName="$(ArchiveFileName)" RootDir="$(RootDir)" Files="@(CollectedPdbFiles)" />
+    </Target>
+
+    <Target Name="CollectSolution" Returns="@(CollectedPdbFiles)">
+        <MSBuild Targets="CollectProject"
+                 Projects="@(ProjectReference)"
+                 Properties="
+                    CustomAfterMicrosoftCommonTargets=$(MSBuildThisFileFullPath);
+                    CustomAfterMicrosoftCommonCrossTargetingTargets=$(MSBuildThisFileFullPath)"
+                 BuildInParallel="True">
+            <Output TaskParameter="TargetOutputs" ItemName="CollectedPdbFiles" />
+        </MSBuild>
+    </Target>
+
+    <Target Name="CollectProject" DependsOnTargets="CollectForSingleTargetBuild;CollectForCrossTargetingBuild"
+            Returns="@(CollectedPdbFiles)" />
+
+    <Target Name="CollectForSingleTargetBuild" Condition="'$(IsCrossTargetingBuild)' != 'true'"
+            DependsOnTargets="DebugSymbolsProjectOutputGroup"
+            Returns="@(CollectedPdbFiles)">
+        <ItemGroup>
+            <CollectedPdbFiles Include="@(DebugSymbolsProjectOutputGroupOutput)" />
+        </ItemGroup>
+    </Target>
+
+    <Target Name="CollectForCrossTargetingBuild" Condition="'$(IsCrossTargetingBuild)' == 'true'"
+            DependsOnTargets="SetBuildInnerTarget;DispatchToInnerBuilds">
+        <ItemGroup>
+            <CollectedPdbFiles Include="@(InnerOutput)" />
+        </ItemGroup>
+    </Target>
+
+    <Target Name="SetBuildInnerTarget" >
+        <PropertyGroup >
+            <InnerTargets>CollectForSingleTargetBuild</InnerTargets>
+        </PropertyGroup>
+    </Target>
+
+</Project>
