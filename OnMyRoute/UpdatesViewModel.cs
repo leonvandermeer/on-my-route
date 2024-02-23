@@ -74,6 +74,7 @@ public sealed class UpdatesViewModel : INotifyPropertyChanged, IGetCommandProvid
 
     async Task TogglePreReleaseAsync(bool preRelease) {
         try {
+            update = null;
             PreRelease = preRelease;
             UpdateState = UpdateState.Checking; OnPropertyChanged(nameof(UpdateState));
             NewVersion = await updateServer.CheckForUpdateAsync(preRelease);
