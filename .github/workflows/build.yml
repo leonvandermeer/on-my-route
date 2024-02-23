@@ -76,9 +76,7 @@ jobs:
       if: ${{ github.ref_name == 'main' || startsWith(github.ref_name, 'v') }}
       uses: ncipollo/release-action@v1
       with:
-        artifacts: |
-          'OnMyRoute/bin/**/installer/**/*'
-          'Symbols.zip'
+        artifacts: 'OnMyRoute/bin/**/installer/**/*,Symbols.zip'
         artifactErrorsFailBuild: true
         commit: ${{ github.ref_name }}
         tag: ${{ steps.nbgv.outputs.SemVer2 }}
