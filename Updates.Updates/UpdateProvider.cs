@@ -36,10 +36,10 @@ public class UpdateProvider(IReleasesClient release, HttpClient client) {
                     Manifest? manifest = rawManifest.GetManifest();
                     if (manifest != null) {
                         Release release = new(r.Name, r.Prerelease, r.HtmlUrl, r.PublishedAt!.Value, assets, manifest);
-                        releases.Add(release);
                         if (release.Manifest.GetVersionAsSemanticVersion() == version) {
                             break;
                         }
+                        releases.Add(release);
                     }
                 }
             }
