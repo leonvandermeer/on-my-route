@@ -4,23 +4,23 @@
     ".NETStandard,Version=v2.0": {
       "Microsoft.Build.Tasks.Core": {
         "type": "Direct",
-        "requested": "[17.9.5, )",
-        "resolved": "17.9.5",
-        "contentHash": "qzJtQYUQhYb6TG81BWRA1bRxM/C5GdMIleFPQe6fNbqsWJfdLMGv8zQopyLnZ5R/oSO3d9dKSLz/tSnobf6ejQ==",
+        "requested": "[17.10.4, )",
+        "resolved": "17.10.4",
+        "contentHash": "k1sefpk2VvJNwcexMjisH+TdzhspCVRtYvh4fAez5qRM20VvsNxcOIjfDe3h3StZRIGI2aiFKGxBZYkwM+WV+A==",
         "dependencies": {
-          "Microsoft.Build.Framework": "17.9.5",
-          "Microsoft.Build.Utilities.Core": "17.9.5",
-          "Microsoft.NET.StringTools": "17.9.5",
+          "Microsoft.Build.Framework": "17.10.4",
+          "Microsoft.Build.Utilities.Core": "17.10.4",
+          "Microsoft.NET.StringTools": "17.10.4",
           "Microsoft.Win32.Registry": "5.0.0",
-          "System.CodeDom": "7.0.0",
+          "System.CodeDom": "8.0.0",
           "System.Collections.Immutable": "8.0.0",
           "System.Configuration.ConfigurationManager": "8.0.0",
           "System.Memory": "4.5.5",
           "System.Reflection.Metadata": "8.0.0",
           "System.Resources.Extensions": "8.0.0",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "7.0.2",
-          "System.Security.Cryptography.Xml": "7.0.1",
+          "System.Security.Cryptography.Pkcs": "8.0.0",
+          "System.Security.Cryptography.Xml": "8.0.0",
           "System.Security.Principal.Windows": "5.0.0",
           "System.Text.Encoding.CodePages": "7.0.0",
           "System.Threading.Tasks.Dataflow": "8.0.0"
@@ -71,8 +71,8 @@
       },
       "Microsoft.Build.Framework": {
         "type": "Transitive",
-        "resolved": "17.9.5",
-        "contentHash": "CjRmqu9Wv2fyC1d7NKOuBDXcNMI8+GiXGM6izygB+skGGu4Vf0cBcoPq7AFqZCcMpn5DtZ+y7RpaLpB2qrzanQ==",
+        "resolved": "17.10.4",
+        "contentHash": "4qXCwNOXBR1dyCzuks9SwTwFJQO/xmf2wcMislotDWJu7MN/r3xDNoU8Ae5QmKIHPaLG1xmfDkYS7qBVzxmeKw==",
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
           "System.Memory": "4.5.5",
@@ -82,11 +82,11 @@
       },
       "Microsoft.Build.Utilities.Core": {
         "type": "Transitive",
-        "resolved": "17.9.5",
-        "contentHash": "H2hpVdm7cX/uGJD1HOfab3RKgD5tlnvzQkFqvsrAqGHRi0sqb2w1+hRwERFm23witCjmERnqNgiQjYks6/ds8A==",
+        "resolved": "17.10.4",
+        "contentHash": "eEB/tcXkSV+nQgvoa/l53UPtn+KVtKZ8zBceDZsXVTrfE4fA+4+/olrx9W8n2tq4XiESsL9UuGJgCKzqBwQCoQ==",
         "dependencies": {
-          "Microsoft.Build.Framework": "17.9.5",
-          "Microsoft.NET.StringTools": "17.9.5",
+          "Microsoft.Build.Framework": "17.10.4",
+          "Microsoft.NET.StringTools": "17.10.4",
           "Microsoft.Win32.Registry": "5.0.0",
           "System.Collections.Immutable": "8.0.0",
           "System.Configuration.ConfigurationManager": "8.0.0",
@@ -98,8 +98,8 @@
       },
       "Microsoft.NET.StringTools": {
         "type": "Transitive",
-        "resolved": "17.9.5",
-        "contentHash": "C/oPRnjcIZBRzcpl1V06R1eEMCxOGt6mIm+8ioyblELgJEXLM8XjUPuCwljMO52VetsHw54xMcYwU8UEeHEIEg==",
+        "resolved": "17.10.4",
+        "contentHash": "wyABaqY+IHCMMSTQmcc3Ca6vbmg5BaEPgicnEgpll+4xyWZWlkQqUwafweUd9VAhBb4jqplMl6voUHQ6yfdUcg==",
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -128,8 +128,8 @@
       },
       "System.CodeDom": {
         "type": "Transitive",
-        "resolved": "7.0.0",
-        "contentHash": "GLltyqEsE5/3IE+zYRP5sNa1l44qKl9v+bfdMcwg+M9qnQf47wK3H0SUR/T+3N4JEQXF3vV4CSuuo0rsg+nq2A=="
+        "resolved": "8.0.0",
+        "contentHash": "WTlRjL6KWIMr/pAaq3rYqh0TJlzpouaQ/W1eelssHgtlwHAH25jXTkUphTYx9HaIIf7XA6qs/0+YhtLEQRkJ+Q=="
       },
       "System.Collections.Immutable": {
         "type": "Transitive",
@@ -150,8 +150,8 @@
       },
       "System.Formats.Asn1": {
         "type": "Transitive",
-        "resolved": "7.0.0",
-        "contentHash": "+nfpV0afLmvJW8+pLlHxRjz3oZJw4fkyU9MMEaMhCsHi/SN9bGF9q79ROubDiwTiCHezmK0uCWkPP7tGFP/4yg==",
+        "resolved": "8.0.0",
+        "contentHash": "AJukBuLoe3QeAF+mfaRKQb2dgyrvt340iMBHYv+VdBzCUM06IxGlvl0o/uPOS7lHnXPN6u8fFRHSHudx5aTi8w==",
         "dependencies": {
           "System.Buffers": "4.5.1",
           "System.Memory": "4.5.5"
@@ -209,11 +209,11 @@
       },
       "System.Security.Cryptography.Pkcs": {
         "type": "Transitive",
-        "resolved": "7.0.2",
-        "contentHash": "xhFNJOcQSWhpiVGLLBQYoxAltQSQVycMkwaX1z7I7oEdT9Wr0HzSM1yeAbfoHaERIYd5s6EpLSOLs2qMchSKlA==",
+        "resolved": "8.0.0",
+        "contentHash": "ULmp3xoOwNYjOYp4JZ2NK/6NdTgiN1GQXzVVN1njQ7LOZ0d0B9vyMnhyqbIi9Qw4JXj1JgCsitkTShboHRx7Eg==",
         "dependencies": {
           "System.Buffers": "4.5.1",
-          "System.Formats.Asn1": "7.0.0",
+          "System.Formats.Asn1": "8.0.0",
           "System.Memory": "4.5.5",
           "System.Security.Cryptography.Cng": "5.0.0"
         }
@@ -228,12 +228,12 @@
       },
       "System.Security.Cryptography.Xml": {
         "type": "Transitive",
-        "resolved": "7.0.1",
-        "contentHash": "MCxBCtH0GrDuvU63ZODwQHQZPchb24pUAX3MfZ6b13qg246ZD10PRdOvay8C9HBPfCXkymUNwFPEegud7ax2zg==",
+        "resolved": "8.0.0",
+        "contentHash": "HQSFbakswZ1OXFz2Bt3AJlC6ENDqWeVpgqhf213xqQUMDifzydOHIKVb1RV4prayobvR3ETIScMaQdDF2hwGZA==",
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Security.AccessControl": "6.0.0",
-          "System.Security.Cryptography.Pkcs": "7.0.0"
+          "System.Security.Cryptography.Pkcs": "8.0.0"
         }
       },
       "System.Security.Principal.Windows": {
