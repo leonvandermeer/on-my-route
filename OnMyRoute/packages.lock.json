@@ -321,8 +321,8 @@
       },
       "Octokit": {
         "type": "Transitive",
-        "resolved": "10.0.0",
-        "contentHash": "PHUXVZwE0C2wW9Slkfvw85YNr+uPvLKDgnmxVOzDds+jsv7TgTW9GiGNs4ENYKx1vHfZuH2/VmUlJ9W6GKfDSA=="
+        "resolved": "13.0.1",
+        "contentHash": "tjXTa2FXzbd3n17VWpi8UXe05EIJqHcWJW8C2kukftIve00duWiZL8x4i1vlZQ0zQ4RbRANbRc7J5K7Co/1spQ=="
       },
       "System.Diagnostics.DiagnosticSource": {
         "type": "Transitive",
@@ -361,7 +361,7 @@
         "dependencies": {
           "Microsoft.Extensions.Options": "[8.0.2, )",
           "NuGet.Versioning": "[6.10.1, )",
-          "Octokit": "[10.0.0, )",
+          "Octokit": "[13.0.1, )",
           "Updates.Types": "[1.0.0, )"
         }
       }
