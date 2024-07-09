@@ -4,11 +4,11 @@
     "net8.0-windows7.0": {
       "Microsoft.Diagnostics.NETCore.Client": {
         "type": "Direct",
-        "requested": "[0.2.510501, )",
-        "resolved": "0.2.510501",
-        "contentHash": "juoqJYMDs+lRrrZyOkXXMImJHneCF23cuvO4waFRd2Ds7j+ZuGIPbJm0Y/zz34BdeaGiiwGWraMUlln05W1PCQ==",
+        "requested": "[0.2.532401, )",
+        "resolved": "0.2.532401",
+        "contentHash": "g3gdhFsoaKbEYillT07IeXUWyT1y8bC+G/jkWM+PlAHhcZl+9lFeXZT2My59xwRQrXxwQhHPeKg6iLMulqVDXQ==",
         "dependencies": {
-          "Microsoft.Extensions.Logging": "6.0.0"
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.4"
         }
       },
       "Microsoft.Extensions.Hosting": {
