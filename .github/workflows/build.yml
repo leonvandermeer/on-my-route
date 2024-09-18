@@ -36,6 +36,18 @@ jobs:
         } else {
             'Import Code Signing Certificate skipped because secrets are not available.'
         }
+    - name: Dump GitHub context
+      if: ${{ startsWith(github.ref_name, 'dependabot') }}
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: Update packages.lock.json files
+      if: ${{ startsWith(github.ref_name, 'dependabot') }}
+      run: |
+        dotnet restore --force-evaluate
+        git add -- **/packages.lock.json
+        git -c 'user.email=${{ github.event.pusher.email }}' -c 'user.name=${{ github.event.pusher.name }}' commit -m 'Update packages.lock.json files'
+        git push
     - name: Restore, Build
       run: dotnet build -c Release -bl:build.binlog
     - name: Publish
