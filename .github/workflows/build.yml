@@ -46,7 +46,7 @@ jobs:
       run: |
         dotnet restore --force-evaluate
         git add -- **/packages.lock.json
-        git -c 'user.email=${{ github.event.pusher.email }}' -c 'user.name=${{ github.event.pusher.name }}' commit -m 'Update packages.lock.json files'
+        git -c 'user.email=${{ github.event.head_commit.author.email }}' -c 'user.name=${{ github.event.head_commit.author.name }}' commit -m 'Update packages.lock.json files'
         git push
     - name: Restore, Build
       run: dotnet build -c Release -bl:build.binlog
