@@ -328,7 +328,7 @@
       "extensions.logging.singlerollingfile": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Configuration": "[8.0.0, )"
+          "Microsoft.Extensions.Logging.Configuration": "[8.0.1, )"
         }
       },
       "updates.types": {
