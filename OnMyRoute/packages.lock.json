@@ -312,8 +312,8 @@
       },
       "NuGet.Versioning": {
         "type": "Transitive",
-        "resolved": "6.11.1",
-        "contentHash": "YNn3BB71F+guJW42TbAhGcMh3gpyqFMZcPVD9pm5vcvGivTALtRely/VCPWQQ6JQ5PfwIrjPaJMO7VnqyeK3rg=="
+        "resolved": "6.12.1",
+        "contentHash": "fJ6rFYANDnohFsdpaY79FvrJxI6murmoOxXz6nZlf819F48+IBKMnAIg3oIBRtZq5y498ObMtKnro5IitvizUg=="
       },
       "Octokit": {
         "type": "Transitive",
@@ -338,7 +338,7 @@
         "type": "Project",
         "dependencies": {
           "Microsoft.Extensions.Options": "[8.0.2, )",
-          "NuGet.Versioning": "[6.11.1, )",
+          "NuGet.Versioning": "[6.12.1, )",
           "Octokit": "[13.0.1, )",
           "Updates.Types": "[1.0.0, )"
         }
