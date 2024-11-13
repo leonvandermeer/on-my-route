@@ -20,9 +20,9 @@
       },
       "NuGet.Versioning": {
         "type": "Direct",
-        "requested": "[6.11.1, )",
-        "resolved": "6.11.1",
-        "contentHash": "YNn3BB71F+guJW42TbAhGcMh3gpyqFMZcPVD9pm5vcvGivTALtRely/VCPWQQ6JQ5PfwIrjPaJMO7VnqyeK3rg=="
+        "requested": "[6.12.1, )",
+        "resolved": "6.12.1",
+        "contentHash": "fJ6rFYANDnohFsdpaY79FvrJxI6murmoOxXz6nZlf819F48+IBKMnAIg3oIBRtZq5y498ObMtKnro5IitvizUg=="
       },
       "Octokit": {
         "type": "Direct",
