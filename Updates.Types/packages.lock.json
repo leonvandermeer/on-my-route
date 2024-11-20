@@ -23,7 +23,7 @@
         "contentHash": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A=="
       }
     },
-    "net8.0": {
+    "net9.0": {
       "Nerdbank.GitVersioning": {
         "type": "Direct",
         "requested": "[3.6.146, )",
