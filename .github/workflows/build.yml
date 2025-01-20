@@ -56,7 +56,7 @@ jobs:
       run: dotnet build .github\workflows\CollectSymbolFiles.proj -p:Solution=on-my-route.sln -c Release -bl:symbol.binlog
     - name: Delete Code Signing Certificate
       if: ${{ always() }}
-      run: dir -Recurse -Force Cert:\ -Include F97E84A908EA73EAB620C03585520A3D1332BDEB, 3EDE07E2FEA63C436BC67A9422218D90690C3375 | % { del $_.PSPath -DeleteKey -Verbose }
+      run: dir -Recurse -Force Cert:\ -Include 6C3189FAE1E32A5892F5DBE04C254DAC4630281F, C02731566655F92B2EA62F37FEE4CA9BDC4542EE | % { del $_.PSPath -DeleteKey -Verbose }
     - name: Test
       run: dotnet test -c Release --no-build --verbosity normal
     - name: Show Version
