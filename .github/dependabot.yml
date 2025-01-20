@@ -11,3 +11,12 @@ updates:
     directory: /
     schedule:
       interval: daily
+    groups:
+      dotnet-runtime:
+        patterns:
+          - Microsoft*
+          - System*
+      git-versioning:
+        patterns:
+          - Nerdbank.GitVersioning
+          - nbgv
