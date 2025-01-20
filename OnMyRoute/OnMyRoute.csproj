@@ -11,7 +11,7 @@
     <Product>On My Route</Product>
     <PackageProjectUrl>https://github.com/leonvandermeer/on-my-route</PackageProjectUrl>
     <Company>Leon van der Meer</Company>
-    <InstallerCertificateThumbprint>F97E84A908EA73EAB620C03585520A3D1332BDEB</InstallerCertificateThumbprint>
+    <InstallerCertificateThumbprint>C02731566655F92B2EA62F37FEE4CA9BDC4542EE</InstallerCertificateThumbprint>
   </PropertyGroup>
 
   <ItemGroup>
