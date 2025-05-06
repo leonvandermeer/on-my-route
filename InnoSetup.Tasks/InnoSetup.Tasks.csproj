@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.13.9" />
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1742" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.3916" />
     <PackageReference Include="System.Text.Json" Version="9.0.4" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
   </ItemGroup>
 
