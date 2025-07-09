@@ -328,7 +328,7 @@
       "extensions.logging.singlerollingfile": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Configuration": "[9.0.5, )"
+          "Microsoft.Extensions.Logging.Configuration": "[9.0.7, )"
         }
       },
       "updates.types": {
@@ -337,14 +337,14 @@
       "updates.updates": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Extensions.Options": "[9.0.5, )",
+          "Microsoft.Extensions.Options": "[9.0.7, )",
           "NuGet.Versioning": "[6.13.2, )",
           "Octokit": "[14.0.0, )",
           "Updates.Types": "[1.0.0, )"
         }
       }
     },
-    "net9.0-windows7.0/linux-x64": {
+    "net9.0-windows7.0/win-x64": {
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
         "resolved": "9.0.7",
