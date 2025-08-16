@@ -1,6 +1,6 @@
 ﻿<Project>
   <ImportGroup>
-    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4188\buildTransitive\Microsoft.Windows.SDK.BuildTools.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4188\buildTransitive\Microsoft.Windows.SDK.BuildTools.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4654\buildTransitive\Microsoft.Windows.SDK.BuildTools.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4188\buildTransitive\Microsoft.Windows.SDK.BuildTools.targets')" />
     <Import Project="$(MSBuildThisFileDirectory)..\..\InnoSetup.Tasks\build\InnoSetup.Tasks.targets" />
   </ImportGroup>
 </Project>
