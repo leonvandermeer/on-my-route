@@ -12,6 +12,8 @@ jobs:
     runs-on: windows-latest
     permissions:
       contents: write
+    env:
+      HAVE_CERTIFICATE: ${{ secrets.CERTIFICATE != '' }}
     steps:
     - uses: actions/checkout@v4
       with:
@@ -25,17 +27,14 @@ jobs:
     - name: Display .NET information
       run: dotnet --info
     - name: Import Code Signing Certificate
+      if: ${{ env.HAVE_CERTIFICATE == 'true' }}
       env:
         CERTIFICATE: ${{ secrets.CERTIFICATE }}
         CERTIFICATEPASSWORD: ${{ secrets.CERTIFICATEPASSWORD }}
       run: |
-        if ($env:CERTIFICATE -or $env:CERTIFICATEPASSWORD) {
-            Set-Content Certificate.pfx ([Convert]::FromBase64String($env:CERTIFICATE)) -AsByteStream
-            Import-PfxCertificate Certificate.pfx Cert:\CurrentUser\My -Password (ConvertTo-SecureString $env:CERTIFICATEPASSWORD -AsPlainText -Force)
-            del Certificate.pfx
-        } else {
-            'Import Code Signing Certificate skipped because secrets are not available.'
-        }
+        Set-Content Certificate.pfx ([Convert]::FromBase64String($env:CERTIFICATE)) -AsByteStream
+        Import-PfxCertificate Certificate.pfx Cert:\CurrentUser\My -Password (ConvertTo-SecureString $env:CERTIFICATEPASSWORD -AsPlainText -Force)
+        del Certificate.pfx
     - name: Dump GitHub context
       if: ${{ startsWith(github.ref_name, 'dependabot') }}
       env:
@@ -80,12 +79,12 @@ jobs:
         name: Symbol files
         path: 'Symbols.zip'
     - name: Tag
-      if: ${{ github.ref_name == 'main' }}
+      if: ${{ github.ref_name == 'main' && env.HAVE_CERTIFICATE == 'true' }}
       run: |
         git tag ${{ steps.nbgv.outputs.SemVer2 }}
         git push origin ${{ steps.nbgv.outputs.SemVer2 }}
     - name: Release
-      if: ${{ github.ref_name == 'main' || startsWith(github.ref_name, 'v') }}
+      if: ${{ (github.ref_name == 'main' || startsWith(github.ref_name, 'v')) && env.HAVE_CERTIFICATE == 'true' }}
       uses: ncipollo/release-action@v1
       with:
         artifacts: 'OnMyRoute/bin/**/installer/**/*,Symbols.zip'
