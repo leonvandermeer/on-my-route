@@ -47,6 +47,15 @@ jobs:
         git add -- **/packages.lock.json
         git -c 'user.email=${{ github.event.head_commit.author.email }}' -c 'user.name=${{ github.event.head_commit.author.name }}' commit -m 'Update packages.lock.json files'
         git push
+    - name: Update BuildTools version
+      if: ${{ startsWith(github.ref_name, 'dependabot') }}
+      run: |
+        dotnet.exe restore
+        $version = dotnet.exe package list --project .\on-my-route.sln --format json | ConvertFrom-Json | % projects | % frameworks | % topLevelPackages | ? { $_.id -eq 'Microsoft.Windows.SDK.BuildTools' } | % requestedVersion
+        dir OnMyRoute\OnMyRoute.csproj.development.* | % { (Get-Content $_) -replace '\\\d+\.\d+\.\d+\.\d+\\', "\$version\" | Out-File $_ -Encoding utf8BOM }
+        git add -- OnMyRoute\OnMyRoute.csproj.development.*
+        git -c 'user.email=${{ github.event.head_commit.author.email }}' -c 'user.name=${{ github.event.head_commit.author.name }}' commit -m 'Update Microsoft.Windows.SDK.BuildTools version'
+        git push
     - name: Restore, Build
       run: dotnet build -c Release -bl:build.binlog
     - name: Publish
