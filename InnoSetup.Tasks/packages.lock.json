@@ -32,9 +32,9 @@
       },
       "Microsoft.Windows.SDK.BuildTools": {
         "type": "Direct",
-        "requested": "[10.0.26100.4948, )",
-        "resolved": "10.0.26100.4948",
-        "contentHash": "o0T4CVaumDjPNNijKiM7p25vHKdyKqYvaVVLgQO02KTOoUDlgMYJVUQAXn1IG0G9/ZsdZ+bdgWxgQsrO/b37qw=="
+        "requested": "[10.0.26100.6584, )",
+        "resolved": "10.0.26100.6584",
+        "contentHash": "EUt+urbMmyBgDX7CA/8eUZRAzi5CKUHyLvQnKkmCUBgpsgaquGb6/XAORzKy6zy/zbu5RoeTxQP9TSntpP3ETw=="
       },
       "Nerdbank.GitVersioning": {
         "type": "Direct",
