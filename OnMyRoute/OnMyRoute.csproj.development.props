@@ -3,7 +3,7 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
   </PropertyGroup>
   <ImportGroup>
-    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4948\buildTransitive\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.4948\buildTransitive\Microsoft.Windows.SDK.BuildTools.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.6584\buildTransitive\Microsoft.Windows.SDK.BuildTools.props" Condition="Exists('$(NuGetPackageRoot)microsoft.windows.sdk.buildtools\10.0.26100.6584\buildTransitive\Microsoft.Windows.SDK.BuildTools.props')" />
     <Import Project="$(MSBuildThisFileDirectory)..\..\InnoSetup.Tasks\build\InnoSetup.Tasks.props" />
   </ImportGroup>
 </Project>
