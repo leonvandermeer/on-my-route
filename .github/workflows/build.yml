@@ -75,17 +75,17 @@ jobs:
     - run: echo 'SemVer2=${{ steps.nbgv.outputs.SemVer2 }}'
     - name: Upload log files
       if: ${{ success() || failure() }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: log
         path: '**/*.binlog'
     - name: Upload Installer
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: installer
         path: '**/installer/**/*'
     - name: Upload Symbol files
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: Symbol files
         path: 'Symbols.zip'
