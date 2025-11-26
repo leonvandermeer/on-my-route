@@ -344,7 +344,7 @@
         }
       }
     },
-    "net9.0-windows7.0/linux-x64": {
+    "net9.0-windows7.0/win-x64": {
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
         "resolved": "9.0.10",
