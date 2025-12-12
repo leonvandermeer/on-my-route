@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v5
       with:
         fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
-    - uses: actions/cache@v4 # https://github.com/actions/cache/blob/main/examples.md#c---nuget
+    - uses: actions/cache@v5 # https://github.com/actions/cache/blob/main/examples.md#c---nuget
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
